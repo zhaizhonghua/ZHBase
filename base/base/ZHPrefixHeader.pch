@@ -1,0 +1,96 @@
+//
+//  ZHPrefixHeader.pch
+//  base
+//
+//  Created by 翟中华 on 16/11/3.
+//  Copyright © 2016年 yihua. All rights reserved.
+//
+
+#ifndef ZHPrefixHeader_pch
+#define ZHPrefixHeader_pch
+
+#import "UIView+Utils.h"
+#import "UIFont+FZLTXHK.h"
+#import "NSString+check.h"
+#import "UIDevice+Utils.h"
+#import "UIImageView+CornerRadius.h"
+#import "ZHThemeSetting.h"
+#import "ZHWebViewController.h"
+#import "MBProgressHUD+HUD.h"
+#import "ZHTool.h"
+#import "UrlRequest.h"
+#import "NSString+GreedEmoji.h"
+#import "UIImageView+WebCache.h"
+#import "MJRefresh.h"
+
+//获取系统版本
+#define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+#define CurrentSystemVersion [[UIDevice currentDevice] systemVersion]
+
+//判断设备的操做系统是不是ios7
+#define iOS7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0)
+#define iOS8 ([[UIDevice currentDevice].systemVersion doubleValue] >= 8.0)
+
+#define isPad  (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? YES : NO)
+#define isPhone (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? YES : NO)
+
+//屏幕宽 高
+#define ZHScreenW [UIScreen mainScreen].bounds.size.width
+#define ZHScreenH [UIScreen mainScreen].bounds.size.height
+
+//----------------------字体------------------------
+#define XFONT_20 [UIFont systemFontOfSize:20]
+#define XFONT_19 [UIFont systemFontOfSize:19]
+#define XFONT_18 [UIFont systemFontOfSize:18]
+#define XFONT_17 [UIFont systemFontOfSize:17]
+#define XFONT_16 [UIFont systemFontOfSize:16]
+#define XFONT_15 [UIFont systemFontOfSize:15]
+#define XFONT_14 [UIFont systemFontOfSize:14]
+#define XFONT_13 [UIFont systemFontOfSize:13]
+#define XFONT_12 [UIFont systemFontOfSize:12]
+#define XFONT_11 [UIFont systemFontOfSize:11]
+#define XFONT_10 [UIFont systemFontOfSize:10]
+#define XFONT_9 [UIFont systemFontOfSize:9]
+#define XFONT_8 [UIFont systemFontOfSize:8]
+#define XFONT_7 [UIFont systemFontOfSize:7]
+
+// block weak
+#define WEAKSELF typeof(self) __weak weakSelf = self;
+#define STRONGSELF typeof(weakSelf) __strong strongSelf = weakSelf;
+#define WEAKCONTROLS(controls) typeof(controls) __weak weakControls = controls;
+
+//NSLog
+#ifdef DEBUG
+#   define DLog(fmt, ...) {NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);}
+#   define ELog(err) {if(err) DLog(@"%@", err)}
+#else
+#   define DLog(...)
+#   define ELog(err)
+#endif
+
+//解除警告
+#define SuppressPerformSelectorLeakWarning(Stuff) \
+do { \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
+Stuff; \
+_Pragma("clang diagnostic pop") \
+} while (0)
+
+//----------------------颜色类--------------------------
+// rgb颜色转换（16进制->10进制）
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#define RGBColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define RGBAColor(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:a]
+
+//屏幕适配比例
+#define ZHSCALEX [UIScreen mainScreen].bounds.size.width / 375
+#define ZHSCALEY [UIScreen mainScreen].bounds.size.height / 667
+#define ZHNORMALRECT(X, Y, W, H) CGRectMake(X * ZHSCALEX, Y * ZHSCALEY, W * ZHSCALEX, H * ZHSCALEY)
+#define ZHCURERECT(X, Y, W, H) CGRectMake(X * ZHSCALEX, Y * ZHSCALEY, W * ZHSCALEY, H * ZHSCALEY)
+
+//网络变化通知
+#define NOTIF_NETWORK_REACHABILITY @"network.reachability.notifaction"
+
+
+#endif /* ZHPrefixHeader_pch */
