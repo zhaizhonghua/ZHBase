@@ -16,8 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor greenColor];
     self.title = @"发现";
+    self.view.backgroundColor = [UIColor greenColor];
+   
 }
 
 - (void)didReceiveMemoryWarning {
