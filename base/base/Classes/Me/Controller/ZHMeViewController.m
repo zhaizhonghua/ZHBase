@@ -16,8 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor brownColor];
     self.title = @"我的";
+    self.view.backgroundColor = [UIColor brownColor];
+    
 }
 
 - (void)didReceiveMemoryWarning {
