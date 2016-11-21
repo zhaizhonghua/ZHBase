@@ -1,2 +1,2 @@
 # base
-项目基础g框架
+A project's basic framework
